@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <title>Tag Rugby EPS — Arbitrage, tournoi & cartes</title>
+  <meta name="description" content="Pupitre d'arbitrage, rotation de tournoi et cartes joueurs pour le Tag Rugby en EPS. 100 % hors ligne, données stockées uniquement sur l'appareil.">
+  <meta name="theme-color" content="#0b3d2e">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Tag Rugby">
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; manifest-src 'self'; worker-src 'self'">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='112' fill='%230b3d2e'/%3E%3Cellipse cx='256' cy='256' rx='178' ry='112' transform='rotate(-35 256 256)' fill='%23f2c14e' stroke='%23ffffff' stroke-width='16'/%3E%3Cpath d='M176 312 336 200' stroke='%23ffffff' stroke-width='12' stroke-linecap='round'/%3E%3Cpath d='M228 250l22 32M256 230l22 32M284 210l22 32' stroke='%23ffffff' stroke-width='10' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/png;base64,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">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-ball" aria-hidden="true">🏉</span>
+      <div>
+        <h1>Tag Rugby EPS</h1>
+        <p class="brand-sub" id="brandSub">Tournoi hors ligne</p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button class="icon-btn" data-act="toggleMode" id="btnMode" title="Basculer Dossards / Prénoms" aria-label="Basculer entre mode dossards et mode prénoms">#</button>
+      <button class="icon-btn" data-act="toggleVoice" id="btnVoice" title="Annonces vocales" aria-label="Activer ou couper les annonces vocales">🔊</button>
+      <button class="icon-btn" data-act="toggleSun" id="btnSun" title="Mode Plein Soleil" aria-label="Activer le mode Plein Soleil">☀️</button>
+      <button class="icon-btn" data-act="toggleFullscreen" id="btnFull" title="Plein écran" aria-label="Plein écran">⛶</button>
+    </div>
+  </header>
+
+  <main id="app">
+    <!-- TOURNOI -->
+    <section class="view" id="view-tournoi" data-view="tournoi">
+      <div class="panel">
+        <h2>⚙️ Créer le tournoi</h2>
+        <div class="form-grid">
+          <label>Nombre d'équipes
+            <select id="setTeamCount">
+              <option value="2">2</option><option value="3">3</option><option value="4">4</option>
+              <option value="5">5</option><option value="6">6</option><option value="7">7</option>
+              <option value="8">8</option>
+            </select>
+          </label>
+          <label>Joueurs par équipe
+            <select id="setPlayers">
+              <option value="3">3</option><option value="4">4</option><option value="5">5</option>
+            </select>
+          </label>
+          <label>Terrains simultanés
+            <select id="setFields">
+              <option value="1">1 terrain</option><option value="2">2 terrains</option><option value="3">3 terrains</option>
+            </select>
+          </label>
+          <label>Durée d'un match (min)
+            <input type="number" id="setDuration" min="1" max="30" step="0.5" inputmode="decimal">
+          </label>
+          <label class="check">
+            <input type="checkbox" id="setDouble"> Matchs aller-retour
+          </label>
+        </div>
+        <div class="btn-row">
+          <button class="btn primary" data-act="createTournament">🏆 Créer équipes + rotation</button>
+          <button class="btn" data-act="regenSchedule">🔁 Régénérer la rotation (garde les équipes)</button>
+        </div>
+        <p class="hint">Les équipes sont créées en mode « Dossards rapides » (ex. <b>Bleu 1</b>, <b>Bleu 2</b>…). Les prénoms et genres peuvent être ajoutés à tout moment dans l'onglet <b>Équipes</b> sans perturber le tournoi.</p>
+      </div>
+      <div class="panel">
+        <div class="panel-head">
+          <h2>📋 Grille des rencontres</h2>
+          <span class="muted" id="rotationInfo"></span>
+        </div>
+        <div id="rotation"></div>
+      </div>
+    </section>
+
+    <!-- EQUIPES -->
+    <section class="view" id="view-equipes" data-view="equipes" hidden>
+      <div class="panel">
+        <div class="panel-head">
+          <h2>👥 Équipes & élèves</h2>
+          <div class="seg" role="group" aria-label="Mode d'affichage des joueurs">
+            <button data-act="setMode" data-mode="bibs" id="segBibs">Dossards</button>
+            <button data-act="setMode" data-mode="names" id="segNames">Prénoms</button>
+          </div>
+        </div>
+        <p class="hint">Saisissez le prénom et le genre (F/G) quand vous voulez : les statistiques restent attachées au dossard. Le genre sert au calcul du bonus et de l'attribut Mixité.</p>
+      </div>
+      <div id="teamsEditor" class="teams-grid"></div>
+      <div class="btn-row center">
+        <button class="btn" data-act="addTeam">➕ Ajouter une équipe</button>
+      </div>
+    </section>
+
+    <!-- PUPITRE -->
+    <section class="view" id="view-pupitre" data-view="pupitre" hidden>
+      <div class="pup-matchbar">
+        <select id="matchSelect" aria-label="Rencontre à arbitrer"></select>
+        <span class="pup-ref" id="refInfo"></span>
+      </div>
+
+      <div id="pupEmpty" class="panel empty" hidden>
+        <p>Aucune rencontre sélectionnée.</p>
+        <p class="muted">Créez le tournoi dans l'onglet <b>Tournoi</b>, puis choisissez une rencontre ci-dessus.</p>
+        <button class="btn primary" data-act="goTab" data-tab="tournoi">Aller au tournoi</button>
+      </div>
+
+      <div id="pupBody">
+        <div class="scoreboard">
+          <button class="sb-team" id="sbA" data-act="setKickoff" data-side="a" aria-label="Équipe A">
+            <span class="sb-name"></span>
+            <span class="sb-score">0</span>
+            <span class="sb-ball" aria-hidden="true">🏉</span>
+          </button>
+          <div class="sb-center">
+            <div class="clock" id="clock">06:00</div>
+            <div class="clock-ctrls">
+              <button class="clk-btn play" id="btnPlay" data-act="playPause" aria-label="Lancer ou mettre en pause le chronomètre">▶</button>
+              <button class="clk-btn" data-act="resetClock" aria-label="Réinitialiser le chronomètre">↺</button>
+            </div>
+            <div class="wake" id="wakeInfo"></div>
+          </div>
+          <button class="sb-team" id="sbB" data-act="setKickoff" data-side="b" aria-label="Équipe B">
+            <span class="sb-name"></span>
+            <span class="sb-score">0</span>
+            <span class="sb-ball" aria-hidden="true">🏉</span>
+          </button>
+        </div>
+
+        <div class="attempts" id="attempts">
+          <div class="att-label" id="attLabel">Tentative 1/4</div>
+          <div class="att-gauge">
+            <span data-n="1">1</span><span data-n="2">2</span><span data-n="3">3</span><span data-n="4">4</span>
+          </div>
+        </div>
+
+        <div class="pup-grid">
+          <div class="pup-field-col">
+            <div class="field" id="field">
+              <img id="fieldImg" src="terrain.png" alt="Terrain de Tag Rugby vu de dessus" draggable="false">
+              <div class="field-overlay" id="fieldOverlay"></div>
+            </div>
+            <div class="field-tools">
+              <button class="btn small" data-act="swapSides">⇄ Inverser les côtés</button>
+              <button class="btn small" data-act="clearSpot">✖ Effacer le repère</button>
+              <span class="muted small-txt">Touchez le terrain pour situer la prochaine action.</span>
+            </div>
+          </div>
+
+          <div class="pup-actions">
+            <button class="act act-try" data-act="try">🏉 ESSAI MARQUÉ</button>
+            <button class="act act-tag" data-act="loss" data-type="tag">🏳️ Déflagage / Tag</button>
+            <button class="act act-ground" data-act="loss" data-type="ground">⬇️ Ballon au sol</button>
+            <button class="act act-touch" data-act="loss" data-type="touch">↔️ Touche / Sortie</button>
+            <button class="act act-foul" data-act="loss" data-type="foul">🟨 Faute</button>
+            <button class="act act-int" data-act="intercept">⚡ Interception adverse</button>
+            <button class="act act-undo" data-act="undo">↩️ Annuler la dernière action</button>
+            <button class="act act-small" data-act="swapPossession">🔄 Changer la possession</button>
+            <button class="act act-small act-end" data-act="validateMatch">✅ Valider le match</button>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h3>Journal du match</h3>
+            <span class="muted" id="logCount"></span>
+          </div>
+          <ol class="log" id="log"></ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLASSEMENT -->
+    <section class="view" id="view-classement" data-view="classement" hidden>
+      <div class="panel">
+        <div class="panel-head">
+          <h2>🏆 Classement général</h2>
+          <button class="btn small" data-act="exportCSV" data-kind="classement">⬇ CSV</button>
+        </div>
+        <div id="liveBanner"></div>
+        <div class="table-wrap" id="standings"></div>
+        <p class="hint" id="standingsLegend"></p>
+      </div>
+      <div class="panel">
+        <h2>⭐ Meilleurs élèves</h2>
+        <div id="leaders" class="leaders"></div>
+      </div>
+    </section>
+
+    <!-- CARTES -->
+    <section class="view" id="view-cartes" data-view="cartes" hidden>
+      <div class="panel">
+        <div class="panel-head">
+          <h2>🃏 Cartes joueurs</h2>
+          <select id="cardTeam" aria-label="Filtrer par équipe"></select>
+        </div>
+        <div class="btn-row">
+          <button class="btn primary" data-act="printSheet">🖨️ Planche A4 imprimable</button>
+        </div>
+        <p class="hint">Bronze : début de cycle · Argent : régularité & respect des règles · Or : forte implication jeu + arbitrage · Spéciales : <b>Maestro</b> (meilleur passeur) et <b>Arbitre d'élite</b> (arbitrage 3★, aucune faute). Badge <b>Mixité</b> : toute l'équipe a marqué.</p>
+      </div>
+      <div id="cards" class="cards-grid"></div>
+    </section>
+
+    <!-- REGLAGES -->
+    <section class="view" id="view-reglages" data-view="reglages" hidden>
+      <div class="panel">
+        <h2>🔧 Réglages</h2>
+        <div class="form-grid" id="settingsForm">
+          <label>Durée d'un match (min)<input type="number" data-setting="durationMin" min="1" max="30" step="0.5" inputmode="decimal"></label>
+          <label>Points victoire<input type="number" data-setting="winPts" min="0" max="10" inputmode="numeric"></label>
+          <label>Points nul<input type="number" data-setting="drawPts" min="0" max="10" inputmode="numeric"></label>
+          <label>Points défaite<input type="number" data-setting="lossPts" min="0" max="10" inputmode="numeric"></label>
+          <label>Bonus mixité d'équipe<input type="number" data-setting="mixBonus" min="0" max="20" inputmode="numeric"></label>
+          <label>Points par match arbitré<input type="number" data-setting="refPts" min="0" max="10" inputmode="numeric"></label>
+          <label>Vitesse de la voix<input type="range" data-setting="voiceRate" min="0.7" max="1.5" step="0.05"></label>
+          <label class="check"><input type="checkbox" data-setting="voice"> Annonces vocales</label>
+          <label class="check"><input type="checkbox" data-setting="sun"> Mode Plein Soleil</label>
+        </div>
+        <div class="btn-row">
+          <button class="btn" data-act="testVoice">🔊 Tester la voix</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>📤 Export tableur (Excel / Pronote)</h2>
+        <p class="hint">Fichiers CSV séparés par des points-virgules, encodés en UTF-8 avec BOM : ils s'ouvrent directement dans Excel sans problème d'accents.</p>
+        <div class="btn-row">
+          <button class="btn" data-act="exportCSV" data-kind="rencontres">⬇ Rencontres</button>
+          <button class="btn" data-act="exportCSV" data-kind="classement">⬇ Classement</button>
+          <button class="btn" data-act="exportCSV" data-kind="eleves">⬇ Bilan élèves</button>
+          <button class="btn primary" data-act="exportCSV" data-kind="complet">⬇ Export complet</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>💾 Sauvegarde</h2>
+        <p class="hint">Sauvegarde du tournoi dans un fichier sur cet appareil (pour changer de tablette ou archiver le cycle).</p>
+        <div class="btn-row">
+          <button class="btn" data-act="exportJSON">⬇ Sauvegarder (.json)</button>
+          <label class="btn file-btn">⬆ Restaurer<input type="file" id="importFile" accept="application/json,.json" hidden></label>
+          <button class="btn danger" data-act="resetAll">🗑 Effacer toutes les données</button>
+        </div>
+      </div>
+
+      <div class="panel rgpd">
+        <h2>🔒 Données personnelles (RGPD)</h2>
+        <ul>
+          <li>Toutes les données (prénoms, genres, statistiques) sont stockées <b>uniquement sur cet appareil</b> (<code>localStorage</code> du navigateur).</li>
+          <li>L'application n'effectue <b>aucune requête serveur</b> avec les données des élèves : aucun compte, aucun cloud, aucun traceur, aucune police ou bibliothèque externe.</li>
+          <li>Les fichiers exportés (CSV, PNG, JSON) sont créés localement ; leur conservation relève de l'enseignant.</li>
+          <li>Le mode « Dossards » permet d'utiliser l'application sans aucun prénom.</li>
+          <li>Le bouton « Effacer toutes les données » supprime définitivement le tournoi de l'appareil.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <nav class="tabbar" aria-label="Navigation principale">
+    <button data-act="goTab" data-tab="tournoi"><span>🏆</span>Tournoi</button>
+    <button data-act="goTab" data-tab="equipes"><span>👥</span>Équipes</button>
+    <button data-act="goTab" data-tab="pupitre"><span>🏉</span>Pupitre</button>
+    <button data-act="goTab" data-tab="classement"><span>📊</span>Classement</button>
+    <button data-act="goTab" data-tab="cartes"><span>🃏</span>Cartes</button>
+    <button data-act="goTab" data-tab="reglages"><span>🔧</span>Réglages</button>
+  </nav>
+
+  <div class="strip" id="strip" hidden>
+    <div class="strip-head">
+      <b id="stripTitle"></b>
+      <button class="strip-close" data-act="hideStrip" aria-label="Fermer">✕</button>
+    </div>
+    <div class="strip-players" id="stripPlayers"></div>
+    <div class="strip-timer"><i id="stripBar"></i></div>
+  </div>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal-box" role="dialog" aria-modal="true" id="modalBox"></div>
+  </div>
+
+  <div class="end-overlay" id="endOverlay" hidden>
+    <div class="end-box">
+      <div class="end-title">⏱ FIN DU MATCH</div>
+      <div class="end-score" id="endScore"></div>
+      <div class="btn-row center">
+        <button class="btn primary big" data-act="validateMatch">✅ Valider le match</button>
+        <button class="btn big" data-act="closeEnd">Fermer</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="flash" id="flash"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <div class="print-preview" id="printPreview" hidden>
+    <div class="print-toolbar">
+      <b id="printInfo"></b>
+      <div class="btn-row">
+        <button class="btn primary" data-act="doPrint">🖨️ Imprimer</button>
+        <button class="btn" data-act="closePrint">Fermer</button>
+      </div>
+    </div>
+    <div id="printSheet" class="print-sheet"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
